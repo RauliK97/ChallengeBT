@@ -9,7 +9,7 @@ class VerificationPanel extends React.Component
         this.state = {
             securityCodeText: "",
             secondsUntilInvalid: 120,
-            renderErrorMessage: false
+            errorMessage: null
         }
         this.timer = 0;
     };
@@ -26,7 +26,7 @@ class VerificationPanel extends React.Component
             this.setState({
                 securityCodeText: this.state.securityCodeText,
                 secondsUntilInvalid: this.state.secondsUntilInvalid,
-                renderErrorMessage: true
+                errorMessage: "Code is not correct!"
             })
         }
     }
@@ -39,13 +39,13 @@ class VerificationPanel extends React.Component
             this.setState({
                 securityCodeText: "",
                 secondsUntilInvalid: 0,
-                renderErrorMessage: false
+                errorMessage: null
             })
         }
         this.setState({
             securityCodeText: this.state.securityCodeText,
             secondsUntilInvalid: this.state.secondsUntilInvalid - 1,
-            renderErrorMessage: this.state.renderErrorMessage
+            errorMessage: this.state.errorMessage
         })
     }
 
@@ -61,17 +61,23 @@ class VerificationPanel extends React.Component
                     <p> The code is valid for two minutes. ({this.state.secondsUntilInvalid})</p>
                     <p>{ this.props.securityCode }</p>
                     <input value = {this.state.securityCodeText}
-                           type="text"
+                           type = "text"
                            onChange = { (e) =>
-                           { this.setState( { securityCodeText: e.target.value,
-                               renderErrorMessage: false
+                           { this.setState( {
+                               securityCodeText: e.target.value,
+                               secondsUntilInvalid: this.state.secondsUntilInvalid,
+                               errorMessage: null
                            })}}
                     />
-                    { ( this.state.renderErrorMessage ) ? <p className = {"errorText"}>Code is not correct!</p> : null }
+                    { this.state.errorMessage === null ? null :
+                        <p className = {"errorText"}>{this.state.errorMessage}</p>
+                    }
                     </div>
                     <div style = {{marginTop: "1%"}}>
-                        <button style = {{ marginRight: "10px" }} onClick={ () => { this.checkSecurityCode() }}>Verify</button>
-                        <button onClick={ () => {this.props.changeSessionData("LogInPanel", "", "")} }>Back</button>
+                        <button style = {{marginRight: "10px"}}
+                                onClick = { () => {this.checkSecurityCode()}}>Verify
+                        </button>
+                        <button onClick = { () => {this.props.changeSessionData("LogInPanel", "", "")} }>Back</button>
                     </div>
                 </div>
             )
@@ -81,8 +87,8 @@ class VerificationPanel extends React.Component
             return (
                 <div>
                     <div>
-                        <p> The security code sent to { this.props.loggedUser } expired.</p>
-                        <p> Please go back to Login page and request a new code.</p>
+                        <p>The security code sent to {this.props.loggedUser} expired.</p>
+                        <p>Please go back to Login screen and request a new code.</p>
                     </div>
                     <div style = {{marginTop: "1%"}}>
                         <button onClick={ () => {this.props.changeSessionData("LogInPanel", "", "")} }>Back</button>
@@ -93,7 +99,7 @@ class VerificationPanel extends React.Component
     }
 
     componentDidMount() {
-        this.timer = setInterval( this.countdownUpdate, 1000)
+        this.timer = setInterval(this.countdownUpdate, 1000)
     }
 
     render() {

@@ -3,3 +3,8 @@
     width: 100px;
     display: inline-block;
 }
+.errorText
+{
+    color: red;
+    font-size: 12px;
+}

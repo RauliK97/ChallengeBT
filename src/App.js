@@ -12,13 +12,12 @@ class App extends React.Component
         this.state = {
             activeComponent: "LogInPanel",
             loggedUser: "",
-            securityCode: "0"
+            securityCode: ""
         }
     };
 
     changeCurrentSession = (component, user, securityCode) =>
     {
-        console.log("Should Change: ", component, user, securityCode);
         this.setState({
             activeComponent: component === false ? this.state.activeComponent : component,
             loggedUser: user === false ? this.state.loggedUser : user,
@@ -26,7 +25,7 @@ class App extends React.Component
         })
     }
 
-    renderComponentSwitch()
+    renderComponentSwitch = () =>
     {
         switch (this.state.activeComponent)
         {
@@ -44,7 +43,7 @@ class App extends React.Component
         }
     }
 
-    render()
+    render = () =>
     {
         return (
         <div className="App">
