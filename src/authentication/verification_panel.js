@@ -59,7 +59,6 @@ class VerificationPanel extends React.Component
                     <p> An email with a security code was sent to { this.props.loggedUser }.</p>
                     <p> To continue please input the security code below.</p>
                     <p> The code is valid for two minutes. ({this.state.secondsUntilInvalid})</p>
-                    <p>{ this.props.securityCode }</p>
                     <input value = {this.state.securityCodeText}
                            type = "text"
                            onChange = { (e) =>
