@@ -1,0 +1,43 @@
+#countrySelect
+{
+    width: 300px;
+}
+#citySelect
+{
+    width: 300px;
+}
+#weatherDataRow
+{
+    text-align: left;
+}
+#temperaturePanel
+{
+    display: inline-block;
+    text-align: left;
+    padding-left: 5%;
+}
+#locationField
+{
+    font-size: 20px;
+    font-weight: bold;
+}
+#temperatureField
+{
+    font-size: 50px;
+}
+#descriptionField
+{
+    font-size: 20px;
+}
+#temperatureFeelField
+{
+    font-size: 25px;
+}
+#sunriseField
+{
+    font-size: 20px;
+}
+#sunriseField
+{
+    font-size: 20px;
+}

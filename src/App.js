@@ -10,7 +10,7 @@ class App extends React.Component
     {
         super(props)
         this.state = {
-            activeComponent: "Homepage",
+            activeComponent: "LogInPanel",
             loggedUser: "",
             securityCode: ""
         }
@@ -37,7 +37,9 @@ class App extends React.Component
                                           securityCode = {this.state.securityCode}
                 />
             case "Homepage":
-                return <Homepage changeSessionData = {this.changeCurrentSession}/>;
+                return <Homepage changeSessionData = {this.changeCurrentSession}
+                                 loggedUser = {this.state.loggedUser}
+                />;
             default:
                 return;
         }
