@@ -10,7 +10,7 @@ class App extends React.Component
     {
         super(props)
         this.state = {
-            activeComponent: "LogInPanel",
+            activeComponent: "Homepage",
             loggedUser: "",
             securityCode: ""
         }

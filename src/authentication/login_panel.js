@@ -42,8 +42,6 @@ class LogInPanel extends React.Component
             console.log("Email sending failed...", error);
             alert("Email could not be sent.");
         });
-        // for testing purposes only, will be removed
-        //localChangeSessionDataFunc("VerificationPanel", localEmailText, securityCode);
     }
 
     checkCredentials = () => { return this.state.emailText.trim() !== "" && this.state.passwordText.trim() !== ""; }
