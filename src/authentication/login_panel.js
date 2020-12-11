@@ -82,7 +82,7 @@ class LogInPanel extends React.Component
                     <div>
                         <p className = "input-label">Password:</p>
                         <input value = {this.state.passwordText}
-                               type = "text"
+                               type = "password"
                                onChange = { (e) =>
                                { this.setState( {
                                    emailText: this.state.emailText,
